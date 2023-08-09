@@ -39,6 +39,9 @@ namespace WTW.SecurityServices.Services
 
         public async Task<bool> IsValidPassword(string password)
         {
+            if (!_bloomFilter.HasData)
+                throw new InvalidOperationException("Bloom filter hashes are under construction.");
+
             if (_bloomFilter.Contains(password))
             {
                 _logger.LogInformation("Searching DB for a possible false positive...");

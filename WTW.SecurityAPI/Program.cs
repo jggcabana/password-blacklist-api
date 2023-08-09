@@ -14,7 +14,7 @@ namespace WTW.SecurityAPI
             // Add services to the container.
             builder.Services.AddSingleton<IBaseRepository, BaseRepository>();
             builder.Services.AddSingleton<ISecurityRepository, SecurityRepository.Repositories.SecurityRepository>();
-            builder.Services.AddSingleton<IBloomFilter, BloomFilter2>();
+            builder.Services.AddSingleton<IBloomFilter, BloomFilter>();
             builder.Services.AddScoped<ISecurityService, SecurityService>();
 
             builder.Services.AddControllers();

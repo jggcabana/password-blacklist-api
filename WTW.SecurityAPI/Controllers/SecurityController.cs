@@ -31,6 +31,11 @@ namespace WTW.SecurityAPI.Controllers
                 var result = await _securityService.IsValidPassword(request.Password);
                 return Ok(result);
             }
+            catch (InvalidOperationException e)
+            {
+                _logger.LogError(e.Message);
+                return StatusCode(503);
+            }
             catch (Exception e)
             {
                 _logger.LogError(e.Message);
